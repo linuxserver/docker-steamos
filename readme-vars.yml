@@ -1,0 +1,65 @@
+---
+
+# project information
+project_name: steamos
+project_url: "https://www.steamdeck.com/"
+project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/steamos-logo.png"
+project_blurb: "[SteamOS]({{ project_url }}) is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. **This container will only work with modern AMD GPUs using the AMDGPU driver on a real Linux Host**"
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_blurb_optional_extras_enabled: false
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "latest"}
+
+# development version
+development_versions: false
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "3000", internal_port: "3000", port_desc: "SteamOS desktop gui." }
+  - { external_port: "3001", internal_port: "3001", port_desc: "HTTPS SteamOS desktop gui." }
+custom_params:
+  - { name: "shm-size", name_compose: "shm_size", value: "1gb",desc: "This is needed for the steam browser to function properly." }
+privileged: true
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+
+  **SteamOS is designed for specific AMD based hardware, this container will only work properly on a host with a modern AMD GPU**
+
+  The application can be accessed at:
+  
+  * http://yourhost:3000/
+  * https://yourhost:3001/
+  
+  ### Options in all KasmVNC based GUI containers
+
+  This container is based on [Docker Baseimage KasmVNC](https://github.com/linuxserver/docker-baseimage-kasmvnc) which means there are additional environment variables and run configurations to enable or disable specific functionality.
+
+  #### Optional environment variables
+
+  | Variable | Description |
+  | :----: | --- |
+  | CUSTOM_PORT | Internal port the container listens on for http if it needs to be swapped from the default 3000. |
+  | CUSTOM_HTTPS_PORT | Internal port the container listens on for https if it needs to be swapped from the default 3001. |
+  | CUSTOM_USER | HTTP Basic auth username, abc is default. |
+  | PASSWORD | HTTP Basic auth password, abc is default. If unset there will be no auth |
+  | SUBFOLDER | Subfolder for the application if running a subfolder reverse proxy, need both slashes IE `/subfolder/` |
+  | TITLE | The page title displayed on the web browser, default "KasmVNC Client". |
+  | FM_HOME | This is the home directory (landing) for the file manager, default "/config". |
+  | DRINODE | If mounting in /dev/dri for [DRI3 GPU Acceleration](https://www.kasmweb.com/kasmvnc/docs/master/gpu_acceleration.html) allows you to specify the device to use IE `/dev/dri/renderD128` |
+
+# changelog
+changelogs:
+  - { date: "04.07.23:", desc: "Initial release." }
