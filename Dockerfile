@@ -1,11 +1,10 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:arch
+FROM lsiodev/kasmvnc-base:arch-c4215973-pkg-c4215973-dev-d1ed79ccc7d1225acad0a6c9870904a8da3ad960
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="thelamer"
-ENV START_DOCKER=false
 
 RUN \
   echo "**** add steam repos ****" && \
@@ -41,11 +40,12 @@ RUN \
     xorg-xwayland-jupiter && \
   echo "**** kde tweaks ****" && \
   sed -i \
-    -e 's#preferred://browser#applications:firefox.desktop#g' \
     -e 's/applications:org.kde.discover.desktop,/applications:org.kde.konsole.desktop,/g' \
+    -e 's#preferred://browser#applications:firefox.desktop#g' \
     /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
   echo "**** steam tweaks ****" && \
-  find / -name "steam.desktop" -exec sed -i '/^Exec=/ s/$/ -vgui/' {} \; && \
+  find / -name "steam.desktop" -exec sed -i 's/^Exec=/Exec=dbus-launch /g' {} \; && \
+  find / -name "systemsettings.desktop" -exec sed -i 's/^Exec=/Exec=dbus-launch /g' {} \; && \
   echo "**** cleanup ****" && \
   rm -rf \
     /config/.cache \
