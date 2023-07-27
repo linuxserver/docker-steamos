@@ -15,4 +15,5 @@ mkdir -p $HOME/.XDG
 export XDG_RUNTIME_DIR=$HOME/.XDG
 
 # Launch DE
-dbus-launch /usr/bin/startplasma-x11 > /dev/null 2>&1
+export $(dbus-launch)
+/usr/bin/startplasma-x11 > /dev/null 2>&1

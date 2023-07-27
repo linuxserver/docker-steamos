@@ -43,9 +43,6 @@ RUN \
     -e 's/applications:org.kde.discover.desktop,/applications:org.kde.konsole.desktop,/g' \
     -e 's#preferred://browser#applications:firefox.desktop#g' \
     /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
-  echo "**** steam tweaks ****" && \
-  find / -name "steam.desktop" -exec sed -i 's/^Exec=/Exec=dbus-launch /g' {} \; && \
-  find / -name "systemsettings.desktop" -exec sed -i 's/^Exec=/Exec=dbus-launch /g' {} \; && \
   echo "**** cleanup ****" && \
   rm -rf \
     /config/.cache \

@@ -97,7 +97,9 @@ services:
   steamos:
     image: lscr.io/linuxserver/steamos:latest
     container_name: steamos
-    privileged: true
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined #optional
     environment:
       - PUID=1000
       - PGID=1000
@@ -116,7 +118,8 @@ services:
 ```bash
 docker run -d \
   --name=steamos \
-  --privileged \
+  --security-opt seccomp=unconfined \
+  --security-opt apparmor=unconfined `#optional` \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
@@ -142,6 +145,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-v /config` | Users home directory in the container, stores all files and games. |
 | `--shm-size=` | This is needed for the steam browser to function properly. |
+| `--security-opt seccomp=unconfined` | This is needed to allow kernel syscalls made by Steam. |
+| `--security-opt apparmor=unconfined` | For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks. |
 
 ## Environment variables from files (Docker secrets)
 
