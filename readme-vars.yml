@@ -54,6 +54,9 @@ param_devices:
 param_usage_include_hostname: "optional"
 param_hostname: "hostname"
 param_hostname_desc: "Specify the hostname of the host, needed for LAN Remote Play"
+cap_add_param: true
+cap_add_param_vars:
+  - { cap_add_var: "NET_ADMIN" }
 
 # application setup block
 app_setup_block_enabled: true

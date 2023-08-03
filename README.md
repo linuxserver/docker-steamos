@@ -98,6 +98,8 @@ services:
     image: lscr.io/linuxserver/steamos:latest
     container_name: steamos
     hostname: hostname #optional
+    cap_add:
+      - NET_ADMIN
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined #optional
@@ -128,6 +130,7 @@ services:
 docker run -d \
   --name=steamos \
   --hostname=hostname `#optional` \
+  --cap-add=NET_ADMIN \
   --security-opt seccomp=unconfined \
   --security-opt apparmor=unconfined `#optional` \
   -e PUID=1000 \
@@ -172,6 +175,10 @@ Container images are configured using parameters passed at runtime (such as thos
 | `--shm-size=` | This is needed for the steam browser to function properly. |
 | `--security-opt seccomp=unconfined` | This is needed to allow kernel syscalls made by Steam. |
 | `--security-opt apparmor=unconfined` | For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks. |
+
+### Portainer notice
+
+This image utilises `cap_add` or `sysctl` to work properly. This is not implemented properly in some versions of Portainer, thus this image may not work if deployed through Portainer.
 
 ## Environment variables from files (Docker secrets)
 
