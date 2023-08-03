@@ -48,7 +48,8 @@ opt_param_usage_include_vols: true
 opt_param_volumes:
   - { vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support." }
   - { vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support." }
-param_device_map:
+param_device_map: true
+param_devices:
   - { device_host_path: "/dev/dri", device_path: "/dev/dri", desc: "Video card passthrough to Steam." }
 param_usage_include_hostname: "optional"
 param_hostname: "hostname"

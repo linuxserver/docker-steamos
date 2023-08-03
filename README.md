@@ -117,6 +117,7 @@ services:
       - 27031-27036:27031-27036/udp #optional
       - 27031-27036:27031-27036 #optional
     devices:
+      - /dev/dri:/dev/dri
     shm_size: "1gb"
     restart: unless-stopped
 ```
@@ -141,6 +142,7 @@ docker run -d \
   -v /path/to/config:/config \
   -v /dev/input:/dev/input `#optional` \
   -v /run/udev/data:/run/udev/data `#optional` \
+  --device /dev/dri:/dev/dri \
   --shm-size="1gb" \
   --restart unless-stopped \
   lscr.io/linuxserver/steamos:latest
@@ -166,6 +168,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Users home directory in the container, stores all files and games. |
 | `-v /dev/input` | Optional for gamepad support. |
 | `-v /run/udev/data` | Optional for gamepad support. |
+| `--device /dev/dri` | Video card passthrough to Steam. |
 | `--shm-size=` | This is needed for the steam browser to function properly. |
 | `--security-opt seccomp=unconfined` | This is needed to allow kernel syscalls made by Steam. |
 | `--security-opt apparmor=unconfined` | For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks. |
