@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Set route if defined
+if [ ! -z ${HOST_IP+x} ]; then
+  sudo ip route delete default
+  sudo ip route add ${HOST_IP} dev eth0
+  sudo ip route add default via ${HOST_IP}
+fi
+
 # Set defaults for KDE
 if [ ! -f $HOME/.config/kwinrc ]; then
   kwriteconfig5 --file $HOME/.config/kwinrc --group Compositing --key Enabled false

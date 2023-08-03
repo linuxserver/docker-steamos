@@ -97,6 +97,7 @@ services:
   steamos:
     image: lscr.io/linuxserver/steamos:latest
     container_name: steamos
+    hostname: hostname #optional
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined #optional
@@ -104,11 +105,18 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+      - DRINODE=/dev/dri/renderD128
+      - HOST_IP=192.168.100.10 #optional
     volumes:
       - /path/to/config:/config
+      - /dev/input:/dev/input #optional
+      - /run/udev/data:/run/udev/data #optional
     ports:
       - 3000:3000
       - 3001:3001
+      - 27031-27036:27031-27036/udp #optional
+      - 27031-27036:27031-27036 #optional
+    devices:
     shm_size: "1gb"
     restart: unless-stopped
 ```
@@ -118,14 +126,21 @@ services:
 ```bash
 docker run -d \
   --name=steamos \
+  --hostname=hostname `#optional` \
   --security-opt seccomp=unconfined \
   --security-opt apparmor=unconfined `#optional` \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
+  -e DRINODE=/dev/dri/renderD128 \
+  -e HOST_IP=192.168.100.10 `#optional` \
   -p 3000:3000 \
   -p 3001:3001 \
+  -p 27031-27036:27031-27036/udp `#optional` \
+  -p 27031-27036:27031-27036 `#optional` \
   -v /path/to/config:/config \
+  -v /dev/input:/dev/input `#optional` \
+  -v /run/udev/data:/run/udev/data `#optional` \
   --shm-size="1gb" \
   --restart unless-stopped \
   lscr.io/linuxserver/steamos:latest
@@ -138,12 +153,19 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
+| `--hostname=` | Specify the hostname of the host, needed for LAN Remote Play |
 | `-p 3000` | SteamOS desktop gui. |
 | `-p 3001` | HTTPS SteamOS desktop gui. |
+| `-p 27031-27036/udp` | Steam Remote Play Ports (UDP). |
+| `-p 27031-27036` | Steam Remote Play Ports (TCP). |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
+| `-e DRINODE=/dev/dri/renderD128` | Specify the render device (GPU) for the contianer to use. |
+| `-e HOST_IP=192.168.100.10` | Specify the IP of the host, needed for LAN Remote Play. |
 | `-v /config` | Users home directory in the container, stores all files and games. |
+| `-v /dev/input` | Optional for gamepad support. |
+| `-v /run/udev/data` | Optional for gamepad support. |
 | `--shm-size=` | This is needed for the steam browser to function properly. |
 | `--security-opt seccomp=unconfined` | This is needed to allow kernel syscalls made by Steam. |
 | `--security-opt apparmor=unconfined` | For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks. |

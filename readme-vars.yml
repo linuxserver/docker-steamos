@@ -21,6 +21,10 @@ param_container_name: "{{ project_name }}"
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+  - { env_var: "DRINODE", env_value: "/dev/dri/renderD128", desc: "Specify the render device (GPU) for the contianer to use." }
+opt_param_usage_include_env: true
+opt_param_env_vars:
+  - { env_var: "HOST_IP", env_value: "192.168.100.10", desc: "Specify the IP of the host, needed for LAN Remote Play." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games." }
@@ -28,6 +32,10 @@ param_usage_include_ports: true
 param_ports:
   - { external_port: "3000", internal_port: "3000", port_desc: "SteamOS desktop gui." }
   - { external_port: "3001", internal_port: "3001", port_desc: "HTTPS SteamOS desktop gui." }
+opt_param_usage_include_ports: true
+opt_param_ports:
+  - { external_port: "27031-27036", internal_port: "27031-27036/udp", port_desc: "Steam Remote Play Ports (UDP)." }
+  - { external_port: "27031-27036", internal_port: "27031-27036", port_desc: "Steam Remote Play Ports (TCP)." }
 custom_params:
   - { name: "shm-size", name_compose: "shm_size", value: "1gb",desc: "This is needed for the steam browser to function properly." }
 security_opt_param: true
@@ -36,6 +44,15 @@ security_opt_param_vars:
 opt_security_opt_param: true
 opt_security_opt_param_vars:
   - { run_var: "apparmor=unconfined", compose_var: "apparmor:unconfined", desc: "For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks." }
+opt_param_usage_include_vols: true
+opt_param_volumes:
+  - { vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support." }
+  - { vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support." }
+param_device_map:
+  - { device_host_path: "/dev/dri", device_path: "/dev/dri", desc: "Video card passthrough to Steam." }
+param_usage_include_hostname: "optional"
+param_hostname: "hostname"
+param_hostname_desc: "Specify the hostname of the host, needed for LAN Remote Play"
 
 # application setup block
 app_setup_block_enabled: true
