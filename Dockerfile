@@ -1,4 +1,4 @@
-FROM lsiodev/kasmvnc-base:arch-c4215973-pkg-c4215973-dev-d1ed79ccc7d1225acad0a6c9870904a8da3ad960
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:arch
 
 # set version label
 ARG BUILD_DATE
