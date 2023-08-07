@@ -17,6 +17,14 @@ fi
 setterm blank 0
 setterm powerdown 0
 
+# Copy default files
+if [ ! -f $HOME/Desktop/steam-desktop.desktop ]; then
+  cp \
+    /defaults/steam-desktop.desktop \
+    $HOME/Desktop/steam-desktop.desktop
+  chmod +x $HOME/Desktop/steam-desktop.desktop
+fi
+
 # Runtime deps
 mkdir -p $HOME/.XDG
 export XDG_RUNTIME_DIR=$HOME/.XDG

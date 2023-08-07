@@ -40,7 +40,7 @@ Find us at:
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-steamos%2Fjob%2Fmaster%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-steamos/job/master/)
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.linuxserver.io%2Flinuxserver%2Fsteamos%2Flatest%2Fci-status.yml)](https://ci-tests.linuxserver.io/linuxserver/steamos/latest/index.html)
 
-[SteamOS](https://www.steamdeck.com/) is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. **This container will only work with modern AMD GPUs using the AMDGPU driver on a real Linux Host**
+[SteamOS](https://www.steamdeck.com/) is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. **This container will only work with modern AMD/Intel GPUs on a real Linux Host**
 
 [![steamos](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/steamos-logo.png)](https://www.steamdeck.com/)
 
@@ -60,7 +60,12 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-**SteamOS is designed for specific AMD based hardware, this container will only work properly on a host with a modern AMD GPU**
+*This container is currently in a Beta state, things may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
+
+**SteamOS is designed for specific AMD based hardware, this container will only work properly on a host with a modern AMD GPU or Intel ARC/iGPU**
+
+To improve compatibility we ingest drivers from vanilla Arch repos, *but NVIDIA will never work*. This is a limitation of the [KasmVNC](https://kasmweb.com/kasmvnc) virtual framebuffer that we use as it only has logic for the [DRI3](https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure) framework which is not available for NVIDIA. We recommend using a modern RDNA AMD card or Intel ARC card, but lower end GPUs might work for some games we do bundle all the drivers that are possible to install.
+Compatibility should be on par with the Steam Deck, if it is certified for the Deck it will run in our testing and the game should be fully playable.
 
 The application can be accessed at:
 
@@ -83,6 +88,23 @@ This container is based on [Docker Baseimage KasmVNC](https://github.com/linuxse
 | TITLE | The page title displayed on the web browser, default "KasmVNC Client". |
 | FM_HOME | This is the home directory (landing) for the file manager, default "/config". |
 | DRINODE | If mounting in /dev/dri for [DRI3 GPU Acceleration](https://www.kasmweb.com/kasmvnc/docs/master/gpu_acceleration.html) allows you to specify the device to use IE `/dev/dri/renderD128` |
+
+### Networking
+
+**Windows users will need to disable their firewall for remote play to function in the default setup**
+
+Steam network discovery in it's current state is pretty inflexible, to function locally it uses broadcast packets that cannot traverse subnets and this becomes a problem when using a Docker subnet. In the default configuration we recommend forwarding the ports and passing the underlying host's IP using the `HOST_IP` environment variable. When the container spins up it will set this IP as it's default route allowing remote play to function over a local network given the client does not have a firewall in the way blocking the traffic. If you never plan to use remote play or only plan on using it fully remote off your LAN through a Valve relay then you can essentially rip out all the logic for Steam port forwarding and passing the host ip to the container. 
+
+Optimally [Macvlan](https://docs.docker.com/network/drivers/macvlan/) can be used to give this container a dedicated IP on your network and run closer to how a bridged VM would. This is the most compatible methodology and will avoid any potentially port conflicts. 
+
+[Host Networking](https://docs.docker.com/network/drivers/host/) can also be used, but might run into a port conflict with what the container is trying to init and the underlying host.
+
+### Gameplay
+
+Keep in mind this container thinks it is a Steam Deck, games will be optimized for it's controller layout and video settings. To get a desktop Steam experience for remote play or testing there is a desktop shortcut provided `Steam Desktop Mode`.
+Most games will tie themselves to the current desktop resolution as set when you connect to the web interface, a method for setting the resolution via the web interface is being worked on.
+Authentication (not two factor) is not currently saved when closing and re-opening Steam for any reason when in Deck mode this is also being worked on. This means anytime you restart the container you will need to access the web interface and log back in.
+It is possible to play games over KasmVNC, but it as a protocol is not currently optimized for gaming. You will experience more frame skipping and latency as compared to Steam remote play.
 
 ## Usage
 
@@ -158,7 +180,7 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `--hostname=` | Specify the hostname of the host, needed for LAN Remote Play |
+| `--hostname=` | Specify the hostname of the host, this is useful for keeping a persistent hostname between upgrades and identifying the server in the remote play Steam Client. |
 | `-p 3000` | SteamOS desktop gui. |
 | `-p 3001` | HTTPS SteamOS desktop gui. |
 | `-p 27031-27036/udp` | Steam Remote Play Ports (UDP). |
