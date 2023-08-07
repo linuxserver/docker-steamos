@@ -93,6 +93,8 @@ This container is based on [Docker Baseimage KasmVNC](https://github.com/linuxse
 
 **Windows users will need to disable their firewall for remote play to function in the default setup**
 
+**The Steam Link application will only function in Host or Macvlan networking modes**
+
 Steam network discovery in it's current state is pretty inflexible, to function locally it uses broadcast packets that cannot traverse subnets and this becomes a problem when using a Docker subnet. In the default configuration we recommend forwarding the ports and passing the underlying host's IP using the `HOST_IP` environment variable. When the container spins up it will set this IP as it's default route allowing remote play to function over a local network given the client does not have a firewall in the way blocking the traffic. If you never plan to use remote play or only plan on using it fully remote off your LAN through a Valve relay then you can essentially rip out all the logic for Steam port forwarding and passing the host ip to the container. 
 
 Optimally [Macvlan](https://docs.docker.com/network/drivers/macvlan/) can be used to give this container a dedicated IP on your network and run closer to how a bridged VM would. This is the most compatible methodology and will avoid any potentially port conflicts. 
