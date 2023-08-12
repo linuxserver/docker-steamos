@@ -14,21 +14,46 @@ fi
 if [ ! -f $HOME/.config/kscreenlockerrc ]; then
   kwriteconfig5 --file $HOME/.config/kscreenlockerrc --group Daemon --key Autolock false
 fi
+gio mime x-scheme-handler/https firefox.desktop
+gio mime x-scheme-handler/http firefox.desktop
 setterm blank 0
 setterm powerdown 0
 
 # Copy default files
-if [ ! -f $HOME/Desktop/steam-desktop.desktop ]; then
+if [ ! -f $HOME/Desktop/steam-deck.desktop ]; then
   cp \
-    /defaults/steam-desktop.desktop \
-    $HOME/Desktop/steam-desktop.desktop
-  chmod +x $HOME/Desktop/steam-desktop.desktop
+    /defaults/steam-deck.desktop \
+    $HOME/Desktop/steam-deck.desktop
+  chmod +x $HOME/Desktop/steam-deck.desktop
 fi
+if [ ! -d $HOME/.config/sunshine ]; then
+  mkdir -p $HOME/.config/sunshine
+  cp /defaults/apps.json $HOME/.config/sunshine/
+  if [ -z ${DRINODE+x} ]; then
+    DRINODE="/dev/dri/renderD128"
+  fi
+  echo "adapter_name = ${DRINODE}" > $HOME/.config/sunshine/sunshine.conf
+fi
+
+# Start sunshine in background
+sunshine &
 
 # Runtime deps
 mkdir -p $HOME/.XDG
 export XDG_RUNTIME_DIR=$HOME/.XDG
 
-# Launch DE
+# Launch DE depending on env
+if [ -z ${RESOLUTION+x} ]; then
+  RESOLUTION="1920x1080"
+fi
+if [ -z ${STARTUP+x} ]; then
+  STARTUP="KDE"
+fi
 export $(dbus-launch)
-/usr/bin/startplasma-x11 > /dev/null 2>&1
+if [[ "${STARTUP}" == "BIGPICTURE" ]]; then
+  sudo sed -i 's/resize=remote/resize=scale/g' /kclient/public/index.html
+  gamescope -e -f -b -g -W $(echo ${RESOLUTION}| awk -F'x' '{print $1}') -H $(echo ${RESOLUTION}| awk -F'x' '{print $2}') -r 60 -- steam -bigpicture
+else
+  sudo sed -i 's/resize=scale/resize=remote/g' /kclient/public/index.html
+  /usr/bin/startplasma-x11 > /dev/null 2>&1
+fi

@@ -1,0 +1,11 @@
+{
+  "env": {
+    "PATH": "$(PATH):$(HOME)/.local/bin"
+  },
+  "apps": [
+    {
+      "name": "SteamOS",
+      "image-path": "steam.png"
+    }
+  ]
+}

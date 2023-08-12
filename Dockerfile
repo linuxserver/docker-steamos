@@ -52,12 +52,24 @@ RUN \
     lib32-opencl-mesa \
     lib32-renderdoc-minimal \
     mangohud \
+    noto-fonts-cjk \
     plasma-desktop \
     sddm-wayland \
     steamdeck-kde-presets \
     steam-jupiter-stable \
     steamos-customizations \
+    xdg-user-dirs \
     xorg-xwayland-jupiter && \
+  echo "**** install sunshine ****" && \
+  SUNSHINE_VERSION=$(curl -sX GET "https://api.github.com/repos/LizardByte/Sunshine/releases/latest" \
+    | awk '/tag_name/{print $4;exit}' FS='[""]') && \
+  curl -o \
+    /tmp/sunshine.pkg.tar.zst -L \
+    "https://github.com/LizardByte/Sunshine/releases/download/${SUNSHINE_VERSION}/sunshine.pkg.tar.zst" && \
+  pacman -U --noconfirm /tmp/sunshine.pkg.tar.zst && \
+  usermod -G input abc && \
+  echo "**** steam tweaks ****" && \
+  sed -i 's/-steamdeck//g' /usr/bin/steam && \
   echo "**** kde tweaks ****" && \
   sed -i \
     -e 's/applications:org.kde.discover.desktop,/applications:org.kde.konsole.desktop,/g' \

@@ -25,6 +25,8 @@ param_env_vars:
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "HOST_IP", env_value: "192.168.100.10", desc: "Specify the IP of the host, needed for LAN Remote Play." }
+  - { env_var: "STARTUP", env_value: "KDE", desc: "KDE to boot into desktop mode, BIGPICTURE to boot into gamescope." }
+  - { env_var: "RESOLUTION", env_value: "1920x1080", desc: "When booting into BIGPICTURE mode the screen resolution will be bound to this value." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games." }
@@ -36,6 +38,9 @@ opt_param_usage_include_ports: true
 opt_param_ports:
   - { external_port: "27031-27036", internal_port: "27031-27036/udp", port_desc: "Steam Remote Play Ports (UDP)." }
   - { external_port: "27031-27036", internal_port: "27031-27036", port_desc: "Steam Remote Play Ports (TCP)." }
+  - { external_port: "47984-47990:47984-47990", internal_port: "47984-47990:47984-47990/tcp", port_desc: "Sunshine Ports (TCP)." }
+  - { external_port: "48010:48010", internal_port: "48010:48010", port_desc: "Sunshine Ports (TCP)." }
+  - { external_port: "47998-48000:47998-48000", internal_port: "47998-48000:47998-48000/udp", port_desc: "Sunshine Ports (UDP)." }
 custom_params:
   - { name: "shm-size", name_compose: "shm_size", value: "1gb",desc: "This is needed for the steam browser to function properly." }
 security_opt_param: true
@@ -46,8 +51,8 @@ opt_security_opt_param_vars:
   - { run_var: "apparmor=unconfined", compose_var: "apparmor:unconfined", desc: "For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks." }
 opt_param_usage_include_vols: true
 opt_param_volumes:
-  - { vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support." }
-  - { vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support." }
+  - { vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support. *Only working for Steam Remote Play" }
+  - { vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support. *Only working for Steam Remote Play" }
 param_device_map: true
 param_devices:
   - { device_host_path: "/dev/dri", device_path: "/dev/dri", desc: "Video card passthrough to Steam." }
@@ -62,9 +67,18 @@ cap_add_param_vars:
 app_setup_block_enabled: true
 app_setup_block: |
 
-  *This container is currently in a Beta state, things may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
+  *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
   **SteamOS is designed for specific AMD based hardware, this container will only work properly on a host with a modern AMD GPU or Intel ARC/iGPU**
+
+  The following limitations currently exist:
+  * You must run the desktop mode initially to login to Steam, then you can switch to `STARTUP=BIGPICTURE`
+  * Sunshine is available in both desktop mode (KDE) and BIGPICTURE, but gamepads using Sunshine does not currently work. 
+  * In Desktop mode most proton games will kill off kwin_x11 and in turn disable keyboard and gamepad input. For remote play in Desktop mode it is mostly Valve or Linux native titles that function properly.
+  * If games are not launching and are Windows based ensure you have forced a compatibility layer in it's settings to use Proton Experimental or Proton 8.
+  * BIGPICTURE STARTUP mode connecting via Sunshine will have much better game compatibility and generally be less buggy. Titles are running how the Steam Deck expects them to inside a gamescope renderer, outside of the lack of gamepads this works identically to a Deck.
+  * Sunshine auto discovery is not functional, you will need to manually enter the IP in your client. 
+  * Remote play does not function well in BIGPICTURE mode, this mode is optimized for a single resolution passed on boot using Sunshine.
 
   To improve compatibility we ingest drivers from vanilla Arch repos, *but NVIDIA will never work*. This is a limitation of the [KasmVNC](https://kasmweb.com/kasmvnc) virtual framebuffer that we use as it only has logic for the [DRI3](https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure) framework which is not available for NVIDIA. We recommend using a modern RDNA AMD card or Intel ARC card, but lower end GPUs might work for some games we do bundle all the drivers that are possible to install.
   Compatibility should be on par with the Steam Deck, if it is certified for the Deck it will run in our testing and the game should be fully playable.
