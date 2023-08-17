@@ -153,9 +153,9 @@ services:
       - 3001:3001
       - 27031-27036:27031-27036/udp #optional
       - 27031-27036:27031-27036 #optional
-      - 47984-47990:47984-47990:47984-47990:47984-47990/tcp #optional
+      - 47984-47990:47984-47990 #optional
       - 48010:48010:48010:48010 #optional
-      - 47998-48000:47998-48000:47998-48000:47998-48000/udp #optional
+      - 47998-48000:47998-48000/udp #optional
     devices:
       - /dev/dri:/dev/dri
     shm_size: "1gb"
@@ -182,9 +182,9 @@ docker run -d \
   -p 3001:3001 \
   -p 27031-27036:27031-27036/udp `#optional` \
   -p 27031-27036:27031-27036 `#optional` \
-  -p 47984-47990:47984-47990:47984-47990:47984-47990/tcp `#optional` \
+  -p 47984-47990:47984-47990 `#optional` \
   -p 48010:48010:48010:48010 `#optional` \
-  -p 47998-48000:47998-48000:47998-48000:47998-48000/udp `#optional` \
+  -p 47998-48000:47998-48000/udp `#optional` \
   -v /path/to/config:/config \
   -v /dev/input:/dev/input `#optional` \
   -v /run/udev/data:/run/udev/data `#optional` \
@@ -206,9 +206,9 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 3001` | HTTPS SteamOS desktop gui. |
 | `-p 27031-27036/udp` | Steam Remote Play Ports (UDP). |
 | `-p 27031-27036` | Steam Remote Play Ports (TCP). |
-| `-p 47984-47990:47984-47990/tcp` | Sunshine Ports (TCP). |
+| `-p 47984-47990` | Sunshine Ports (TCP). |
 | `-p 48010:48010` | Sunshine Ports (TCP). |
-| `-p 47998-48000:47998-48000/udp` | Sunshine Ports (UDP). |
+| `-p 47998-48000/udp` | Sunshine Ports (UDP). |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
