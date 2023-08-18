@@ -39,7 +39,7 @@ opt_param_ports:
   - { external_port: "27031-27036", internal_port: "27031-27036/udp", port_desc: "Steam Remote Play Ports (UDP)." }
   - { external_port: "27031-27036", internal_port: "27031-27036", port_desc: "Steam Remote Play Ports (TCP)." }
   - { external_port: "47984-47990", internal_port: "47984-47990", port_desc: "Sunshine Ports (TCP)." }
-  - { external_port: "48010:48010", internal_port: "48010:48010", port_desc: "Sunshine Ports (TCP)." }
+  - { external_port: "48010-48010", internal_port: "48010-48010", port_desc: "Sunshine Ports (TCP)." }
   - { external_port: "47998-48000", internal_port: "47998-48000/udp", port_desc: "Sunshine Ports (UDP)." }
 custom_params:
   - { name: "shm-size", name_compose: "shm_size", value: "1gb",desc: "This is needed for the steam browser to function properly." }
