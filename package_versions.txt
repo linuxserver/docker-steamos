@@ -6,7 +6,7 @@ NAME                                                                          VE
 @socket.io/component-emitter                                                  3.1.0                                                      npm           
 @types/cookie                                                                 0.4.1                                                      npm           
 @types/cors                                                                   2.8.13                                                     npm           
-@types/node                                                                   20.4.10                                                    npm           
+@types/node                                                                   20.5.0                                                     npm           
 accepts                                                                       1.3.8                                                      npm           
 accountsservice                                                               23.13.9-1                                                  alpm          
 acl                                                                           2.3.1-3                                                    alpm          
@@ -337,7 +337,7 @@ github.com/xeipuuv/gojsonschema                                               v1
 glew                                                                          2.2.0-6                                                    alpm          
 glib-networking                                                               1:2.76.1-1                                                 alpm          
 glib2                                                                         2.76.4-1                                                   alpm          
-glibc                                                                         2.38-2                                                     alpm          
+glibc                                                                         2.38-3                                                     alpm          
 glm                                                                           0.9.9.8-1                                                  alpm          
 glu                                                                           9.0.3-1                                                    alpm          
 gmp                                                                           6.3.0-1                                                    alpm          
@@ -542,7 +542,7 @@ lib32-freetype2                                                               2.
 lib32-gamescope                                                               3.11.52.beta2-1                                            alpm          
 lib32-gcc-libs                                                                13.2.1-3                                                   alpm          
 lib32-glib2                                                                   2.76.4-1                                                   alpm          
-lib32-glibc                                                                   2.38-2                                                     alpm          
+lib32-glibc                                                                   2.38-3                                                     alpm          
 lib32-harfbuzz                                                                8.1.1-1                                                    alpm          
 lib32-icu                                                                     73.2-1                                                     alpm          
 lib32-keyutils                                                                1.6.3-1                                                    alpm          
@@ -869,7 +869,7 @@ perl-exception-class                                                          1.
 perl-exporter-tiny                                                            1.006002-2                                                 alpm          
 perl-file-sharedir                                                            1.118-3                                                    alpm          
 perl-file-sharedir-install                                                    0.14-2                                                     alpm          
-perl-hash-merge-simple                                                        0.051-6                                                    alpm          
+perl-hash-merge-simple                                                        0.051-7                                                    alpm          
 perl-list-allutils                                                            0.19-2                                                     alpm          
 perl-list-moreutils                                                           0.430-4                                                    alpm          
 perl-list-moreutils-xs                                                        0.430-4                                                    alpm          
@@ -1046,7 +1046,7 @@ xcb-util-keysyms                                                              0.
 xcb-util-renderutil                                                           0.3.10-1                                                   alpm          
 xcb-util-wm                                                                   0.4.2-1                                                    alpm          
 xdg-user-dirs                                                                 0.18-1                                                     alpm          
-xdg-utils                                                                     1.1.3+25+g8ae0263-1                                        alpm          
+xdg-utils                                                                     1.1.3+45+g301a1a4-1                                        alpm          
 xf86-input-libinput                                                           1.3.0-1                                                    alpm          
 xf86-video-amdgpu                                                             23.0.0-1                                                   alpm          
 xf86-video-ati                                                                1:22.0.0-1                                                 alpm          
