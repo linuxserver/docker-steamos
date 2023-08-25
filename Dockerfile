@@ -44,10 +44,13 @@ RUN \
     dmidecode \
     dolphin \
     firefox \
+    fuse2 \
     gamescope \
+    jq \
     kate \
     konsole \
     lib32-gamescope \
+    lib32-libpulse \
     lib32-mesa-vdpau \
     lib32-opencl-mesa \
     lib32-renderdoc-minimal \
@@ -58,8 +61,10 @@ RUN \
     steamdeck-kde-presets \
     steam-jupiter-stable \
     steamos-customizations \
+    unzip \
     xdg-user-dirs \
-    xorg-xwayland-jupiter && \
+    xorg-xwayland-jupiter \
+    zenity && \
   echo "**** install sunshine ****" && \
   SUNSHINE_VERSION=$(curl -sX GET "https://api.github.com/repos/LizardByte/Sunshine/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]') && \
