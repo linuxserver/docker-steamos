@@ -403,9 +403,9 @@ grep                                                                          3.
 groff                                                                         1.23.0-3                                                   alpm          
 gsettings-desktop-schemas                                                     44.0-1                                                     alpm          
 gsm                                                                           1.0.22-1                                                   alpm          
-gst-plugins-base                                                              1.22.5-1                                                   alpm          
-gst-plugins-base-libs                                                         1.22.5-1                                                   alpm          
-gstreamer                                                                     1.22.5-1                                                   alpm          
+gst-plugins-base                                                              1.22.5-2                                                   alpm          
+gst-plugins-base-libs                                                         1.22.5-2                                                   alpm          
+gstreamer                                                                     1.22.5-2                                                   alpm          
 gtk-update-icon-cache                                                         1:4.12.1-1                                                 alpm          
 gtk3                                                                          1:3.24.38-1                                                alpm          
 guile                                                                         3.0.9-1                                                    alpm          
@@ -494,7 +494,7 @@ ki18n                                                                         5.
 kiconthemes                                                                   5.109.0-1                                                  alpm          
 kidletime                                                                     5.109.0-1                                                  alpm          
 kio                                                                           5.109.0-2                                                  alpm          
-kio-extras                                                                    23.08.0-1                                                  alpm          
+kio-extras                                                                    23.08.0-2                                                  alpm          
 kio-fuse                                                                      5.0.1-1                                                    alpm          
 kirigami2                                                                     5.109.0-1                                                  alpm          
 kitemmodels                                                                   5.109.0-1                                                  alpm          
@@ -659,6 +659,7 @@ libdatrie                                                                     0.
 libdbusmenu-glib                                                              16.04.0.r498-1                                             alpm          
 libdbusmenu-gtk3                                                              16.04.0.r498-1                                             alpm          
 libdbusmenu-qt5                                                               0.9.3+16.04.20160218-6                                     alpm          
+libdeflate                                                                    1.18-1                                                     alpm          
 libdisplay-info                                                               0.1.1-3                                                    alpm          
 libdmtx                                                                       0.7.7-1                                                    alpm          
 libdrm                                                                        2.4.116-1                                                  alpm          
@@ -683,7 +684,7 @@ libinih                                                                       57
 libinput                                                                      1.24.0-1                                                   alpm          
 libisl                                                                        0.26-1                                                     alpm          
 libjpeg-turbo                                                                 3.0.0-1                                                    alpm          
-libjxl                                                                        0.8.2-1                                                    alpm          
+libjxl                                                                        0.8.2-2                                                    alpm          
 libkexiv2                                                                     23.08.0-1                                                  alpm          
 libksba                                                                       1.6.4-1                                                    alpm          
 libkscreen                                                                    5.27.7-1                                                   alpm          
@@ -848,7 +849,7 @@ openal                                                                        1.
 openbox                                                                       3.6.1-10                                                   alpm          
 opencl-mesa                                                                   22.2.0.157821.radeonsi_3.4.0_2-2                           alpm          
 opencore-amr                                                                  0.1.6-1                                                    alpm          
-openexr                                                                       3.1.11-1                                                   alpm          
+openexr                                                                       3.2.0-2                                                    alpm          
 openjpeg2                                                                     2.5.0-2                                                    alpm          
 openmpi                                                                       4.1.5-3                                                    alpm          
 openpmix                                                                      4.2.5-1                                                    alpm          
