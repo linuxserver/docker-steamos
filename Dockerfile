@@ -41,11 +41,13 @@ RUN \
   pacman -Syyu --noconfirm && \
   echo "**** install packages ****" && \
   pacman -Sy --noconfirm --needed \
+    boost-libs \
     dmidecode \
     dolphin \
     firefox \
     fuse2 \
     gamescope \
+    git \
     jq \
     kate \
     konsole \
@@ -66,12 +68,12 @@ RUN \
     xorg-xwayland-jupiter \
     zenity && \
   echo "**** install sunshine ****" && \
-  SUNSHINE_VERSION=$(curl -sX GET "https://api.github.com/repos/LizardByte/Sunshine/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]') && \
-  curl -o \
-    /tmp/sunshine.pkg.tar.zst -L \
-    "https://github.com/LizardByte/Sunshine/releases/download/${SUNSHINE_VERSION}/sunshine.pkg.tar.zst" && \
-  pacman -U --noconfirm /tmp/sunshine.pkg.tar.zst && \
+  cd /tmp && \
+  git clone https://aur.archlinux.org/sunshine.git && \
+  chown -R abc:abc sunshine && \
+  cd sunshine && \
+  sed -i '/npm install/i sudo chown -R 911:1001 \/config' PKGBUILD && \
+  sudo -u abc makepkg -sAci --skipinteg --noconfirm --needed && \
   usermod -G input abc && \
   echo "**** steam tweaks ****" && \
   sed -i 's/-steamdeck//g' /usr/bin/steam && \
@@ -83,6 +85,7 @@ RUN \
   echo "**** cleanup ****" && \
   rm -rf \
     /config/.cache \
+    /config/.npm \
     /tmp/* \
     /var/cache/pacman/pkg/* \
     /var/lib/pacman/sync/*
