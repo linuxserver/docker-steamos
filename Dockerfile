@@ -65,7 +65,7 @@ RUN \
     steamos-customizations \
     unzip \
     xdg-user-dirs \
-    xorg-xwayland-jupiter \
+    xorg-xwayland \
     zenity && \
   echo "**** install sunshine ****" && \
   cd /tmp && \
