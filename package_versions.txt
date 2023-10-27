@@ -1344,7 +1344,7 @@ serve-static                                                                  1.
 set-blocking                                                                  2.0.0                                                      npm           
 set-function-length                                                           1.1.1                                                      npm           
 setprototypeof                                                                1.2.0                                                      npm           
-shadow                                                                        4.14.0-4                                                   alpm          
+shadow                                                                        4.14.1-1                                                   alpm          
 shared-mime-info                                                              2.3-1                                                      alpm          
 shebang-command                                                               2.0.0                                                      npm           
 shebang-regex                                                                 3.0.0                                                      npm           
