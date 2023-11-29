@@ -52,7 +52,10 @@ fi
 export $(dbus-launch)
 if [[ "${STARTUP}" == "BIGPICTURE" ]]; then
   sudo sed -i 's/resize=remote/resize=scale/g' /kclient/public/index.html
-  gamescope -e -f -b -g -W $(echo ${RESOLUTION}| awk -F'x' '{print $1}') -H $(echo ${RESOLUTION}| awk -F'x' '{print $2}') -r 60 -- steam -bigpicture
+  # Gamescope is currently broken use a conventional x11 session in openbox
+  #gamescope -e -f -b -g -W $(echo ${RESOLUTION}| awk -F'x' '{print $1}') -H $(echo ${RESOLUTION}| awk -F'x' '{print $2}') -r 60 -- steam -bigpicture
+  cp /defaults/autostart $HOME/.config/openbox/autostart
+  /usr/bin/openbox-session
 else
   sudo sed -i 's/resize=scale/resize=remote/g' /kclient/public/index.html
   /usr/bin/startplasma-x11 > /dev/null 2>&1
