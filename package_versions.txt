@@ -31,7 +31,7 @@ NAME                                                                          VE
 @tufjs/models                                                                 2.0.0                                                      npm           
 @types/cookie                                                                 0.4.1                                                      npm           
 @types/cors                                                                   2.8.17                                                     npm           
-@types/node                                                                   20.10.0                                                    npm           
+@types/node                                                                   20.10.1                                                    npm           
 Pillow                                                                        10.1.0                                                     python        
 abbrev                                                                        2.0.0                                                      npm           
 abort-controller                                                              3.0.0                                                      npm           
@@ -100,7 +100,7 @@ builtins                                                                      5.
 busybox                                                                       1.36.1-1                                                   alpm          
 bytes                                                                         3.1.2                                                      npm           
 bzip2                                                                         1.0.8-5                                                    alpm          
-c-ares                                                                        1.22.1-1                                                   alpm          
+c-ares                                                                        1.23.0-1                                                   alpm          
 ca-certificates                                                               20220905-1                                                 alpm          
 ca-certificates-mozilla                                                       3.95-1                                                     alpm          
 ca-certificates-utils                                                         20220905-1                                                 alpm          
@@ -159,7 +159,6 @@ dav1d                                                                         1.
 db                                                                            6.2.32-1                                                   alpm          
 db5.3                                                                         5.3.28-4                                                   alpm          
 dbus                                                                          1.14.10-1                                                  alpm          
-dbus-glib                                                                     0.112-3                                                    alpm          
 dconf                                                                         0.40.0-2                                                   alpm          
 ddcutil                                                                       2.0.0-1                                                    alpm          
 debug                                                                         2.6.9                                                      npm           
@@ -214,7 +213,7 @@ filelist                                                                      1.
 filesystem                                                                    2023.09.18-1                                               alpm          
 finalhandler                                                                  1.2.0                                                      npm           
 findutils                                                                     4.9.0-3                                                    alpm          
-firefox                                                                       120.0-1                                                    alpm          
+firefox                                                                       120.0.1-1                                                  alpm          
 flac                                                                          1.4.3-1                                                    alpm          
 flex                                                                          2.6.4-5                                                    alpm          
 fmt                                                                           10.1.1-1                                                   alpm          
@@ -233,7 +232,7 @@ fuse-common                                                                   3.
 fuse-overlayfs                                                                1.13-1                                                     alpm          
 fuse2                                                                         2.9.9-4                                                    alpm          
 fuse3                                                                         3.16.2-1                                                   alpm          
-gamescope                                                                     3.13.8-1                                                   alpm          
+gamescope                                                                     3.13.11-1                                                  alpm          
 gauge                                                                         5.0.1                                                      npm           
 gawk                                                                          5.3.0-1                                                    alpm          
 gc                                                                            8.2.4-1                                                    alpm          
@@ -522,7 +521,7 @@ glob                                                                          10
 glu                                                                           9.0.3-1                                                    alpm          
 gmp                                                                           6.3.0-1                                                    alpm          
 gnu-netcat                                                                    0.7.1-9                                                    alpm          
-gnupg                                                                         2.2.41-2                                                   alpm          
+gnupg                                                                         2.4.3-2                                                    alpm          
 gnutls                                                                        3.8.2-1                                                    alpm          
 go.etcd.io/bbolt                                                              v1.3.7                                                     go-module     
 go.etcd.io/etcd/client/pkg/v3                                                 v3.5.6                                                     go-module     
