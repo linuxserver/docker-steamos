@@ -386,6 +386,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **15.01.24:** - Install gperftools to fix source games.
 * **29.11.23:** - Switch to openbox for bigpicture mode.
 * **06.10.23:** - Ingest sunshine from AUR to compile at build time.
 * **25.08.23:** - Add deps needed for some audio and software compatibility.
