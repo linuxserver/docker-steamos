@@ -48,11 +48,14 @@ RUN \
     fuse2 \
     gamescope \
     git \
+    gperftools \
     jq \
     kate \
     konsole \
     lib32-gamescope \
+    lib32-gcc-libs \
     lib32-libpulse \
+    lib32-libunwind \
     lib32-mesa-vdpau \
     lib32-opencl-mesa \
     lib32-renderdoc-minimal \
@@ -73,6 +76,13 @@ RUN \
   chown -R abc:abc sunshine && \
   cd sunshine && \
   sed -i '/npm install/i sudo chown -R 911:1001 \/config' PKGBUILD && \
+  sudo -u abc makepkg -sAci --skipinteg --noconfirm --needed && \
+  usermod -G input abc && \
+  echo "**** install fix for games using source engine ****" && \
+  cd /tmp && \
+  git clone https://aur.archlinux.org/lib32-gperftools.git && \
+  chown -R abc:abc lib32-gperftools && \
+  cd lib32-gperftools && \
   sudo -u abc makepkg -sAci --skipinteg --noconfirm --needed && \
   usermod -G input abc && \
   echo "**** steam tweaks ****" && \
