@@ -127,6 +127,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "15.01.24:", desc: "Install gperftools to fix source games." }
   - { date: "29.11.23:", desc: "Switch to openbox for bigpicture mode." }
   - { date: "06.10.23:", desc: "Ingest sunshine from AUR to compile at build time." }
   - { date: "25.08.23:", desc: "Add deps needed for some audio and software compatibility." }
