@@ -75,7 +75,7 @@ RUN \
   git clone https://aur.archlinux.org/sunshine.git && \
   chown -R abc:abc sunshine && \
   cd sunshine && \
-  sed -i '/npm install/i sudo chown -R 911:1001 \/config' PKGBUILD && \
+  sed -i '/CXXFLAGS/i sudo chown -R 911:1001 \/config' PKGBUILD && \
   sudo -u abc makepkg -sAci --skipinteg --noconfirm --needed && \
   usermod -G input abc && \
   echo "**** install fix for games using source engine ****" && \
