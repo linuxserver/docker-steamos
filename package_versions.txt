@@ -139,7 +139,7 @@ cookie                                                                        0.
 cookie                                                                        0.6.0                                                      npm                             
 cookie-signature                                                              1.0.6                                                      npm                             
 corepack                                                                      0.25.2                                                     npm                             
-coreutils                                                                     9.4-3                                                      alpm                            
+coreutils                                                                     9.5-1                                                      alpm                            
 cors                                                                          2.8.5                                                      npm                             
 cppdap                                                                        1.58.0-1                                                   alpm                            
 cross-spawn                                                                   7.0.3                                                      npm           (+1 duplicate)    
