@@ -1040,7 +1040,7 @@ libtommath                                                                    1.
 libtool                                                                       2.4.7+4+g1ec8fa28-7                                        alpm                            
 libunibreak                                                                   6.1-1                                                      alpm                            
 libunistring                                                                  1.2-1                                                      alpm                            
-libunwind                                                                     1.8.1-1                                                    alpm                            
+libunwind                                                                     1.8.1-2                                                    alpm                            
 libupnp                                                                       1.14.18-1                                                  alpm                            
 libusb                                                                        1.0.27-1                                                   alpm                            
 libusbmuxd                                                                    2.1.0-1                                                    alpm                            
