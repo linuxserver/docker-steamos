@@ -325,7 +325,7 @@ github.com/distribution/reference                                             v0
 github.com/docker/buildx                                                      v0.13.1                                                    go-module                       
 github.com/docker/cli                                                         v26.0.0+incompatible                                       go-module                       
 github.com/docker/cli/cmd/docker                                              26.0.1                                                     go-module                       
-github.com/docker/compose/v2                                                  (devel)                                                    go-module                       
+github.com/docker/compose/v2                                                  2.26.1                                                     go-module                       
 github.com/docker/distribution                                                v2.8.3+incompatible                                        go-module     (+1 duplicate)    
 github.com/docker/docker                                                      26.0.1                                                     go-module                       
 github.com/docker/docker                                                      v0.0.0-20240410125953-60b9add796ae                         go-module                       
@@ -779,7 +779,7 @@ lapack                                                                        3.
 layer-shell-qt                                                                6.0.3-4                                                    alpm                            
 lcms2                                                                         2.16-1                                                     alpm                            
 ldb                                                                           2:2.9.0-2                                                  alpm                            
-less                                                                          1:643-1                                                    alpm                            
+less                                                                          1:643-2                                                    alpm                            
 lib32-alsa-lib                                                                1.2.11-1                                                   alpm                            
 lib32-alsa-plugins                                                            1.2.7.1-2                                                  alpm                            
 lib32-amdvlk                                                                  2024.Q1.3-2                                                alpm                            
@@ -1521,8 +1521,8 @@ xf86-video-nouveau                                                            1.
 xf86-video-qxl                                                                0.1.6-2                                                    alpm                            
 xkeyboard-config                                                              2.41-1                                                     alpm                            
 xorg-fonts-encodings                                                          1.1.0-1                                                    alpm                            
-xorg-server                                                                   21.1.12-1                                                  alpm                            
-xorg-server-common                                                            21.1.12-1                                                  alpm                            
+xorg-server                                                                   21.1.13-1                                                  alpm                            
+xorg-server-common                                                            21.1.13-1                                                  alpm                            
 xorg-setxkbmap                                                                1.3.4-1                                                    alpm                            
 xorg-xauth                                                                    1.1.3-1                                                    alpm                            
 xorg-xkbcomp                                                                  1.4.7-1                                                    alpm                            
