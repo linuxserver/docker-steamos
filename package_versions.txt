@@ -511,7 +511,7 @@ glew                                                                          2.
 glib-networking                                                               1:2.80.0-1                                                 alpm                            
 glib2                                                                         2.80.2-2                                                   alpm                            
 glibc                                                                         2.39+r52+gf8e4623421-1                                     alpm                            
-glm                                                                           1.0.0-3                                                    alpm                            
+glm                                                                           1.0.1-1                                                    alpm                            
 glob                                                                          10.3.12                                                    npm                             
 glob                                                                          10.3.15                                                    npm                             
 glslang                                                                       14.1.0-1                                                   alpm                            
@@ -715,8 +715,8 @@ kdialog                                                                       24
 kdnssd                                                                        6.2.0-1                                                    alpm                            
 kdsoap-qt6                                                                    2.2.0-1                                                    alpm                            
 kdsoap-ws-discovery-client                                                    0.4.0-1                                                    alpm                            
-kernel.org/pub/linux/libs/security/libcap/cap                                 v1.2.69                                                    go-module                       
-kernel.org/pub/linux/libs/security/libcap/psx                                 v1.2.69                                                    go-module                       
+kernel.org/pub/linux/libs/security/libcap/cap                                 v1.2.70                                                    go-module                       
+kernel.org/pub/linux/libs/security/libcap/psx                                 v1.2.70                                                    go-module                       
 keyutils                                                                      1.6.3-2                                                    alpm                            
 kfilemetadata                                                                 6.2.0-1                                                    alpm                            
 kglobalaccel                                                                  6.2.0-1                                                    alpm                            
@@ -795,7 +795,7 @@ lib32-icu                                                                     75
 lib32-keyutils                                                                1.6.3-2                                                    alpm                            
 lib32-krb5                                                                    1.21.2-1                                                   alpm                            
 lib32-libasyncns                                                              1:0.8+r3+g68cd5af-2                                        alpm                            
-lib32-libcap                                                                  2.69-1                                                     alpm                            
+lib32-libcap                                                                  2.70-1                                                     alpm                            
 lib32-libdrm                                                                  2.4.120-1                                                  alpm                            
 lib32-libelf                                                                  0.191-1                                                    alpm                            
 lib32-libffi                                                                  3.4.6-1                                                    alpm                            
@@ -850,7 +850,7 @@ lib32-mangohud                                                                0.
 lib32-mesa                                                                    1:24.0.7-3                                                 alpm                            
 lib32-mesa-utils                                                              9.0.0-1                                                    alpm                            
 lib32-mesa-vdpau                                                              1:24.0.7-3                                                 alpm                            
-lib32-ncurses                                                                 6.4_20230520-1                                             alpm                            
+lib32-ncurses                                                                 6.5-1                                                      alpm                            
 lib32-nspr                                                                    4.35-2                                                     alpm                            
 lib32-nss                                                                     3.100-1                                                    alpm                            
 lib32-opencl-mesa                                                             23.3.0.179670.radeonsi_3.6.1-2                             alpm                            
@@ -873,7 +873,7 @@ lib32-wayland                                                                 1.
 lib32-xcb-util-keysyms                                                        0.4.1-1                                                    alpm                            
 lib32-xz                                                                      5.6.1-3                                                    alpm                            
 lib32-zlib                                                                    1.3.1-1                                                    alpm                            
-lib32-zstd                                                                    1.5.5-1                                                    alpm                            
+lib32-zstd                                                                    1.5.6-1                                                    alpm                            
 libadwaita                                                                    1:1.5.0-1                                                  alpm                            
 libarchive                                                                    3.7.4-1                                                    alpm                            
 libass                                                                        0.17.2-1                                                   alpm                            
@@ -904,7 +904,7 @@ libcacard                                                                     2.
 libcamera                                                                     0.2.0-1                                                    alpm                            
 libcamera-ipa                                                                 0.2.0-1                                                    alpm                            
 libcanberra                                                                   1:0.30+r2+gc0620e4-3                                       alpm                            
-libcap                                                                        2.69-4                                                     alpm                            
+libcap                                                                        2.70-1                                                     alpm                            
 libcap-ng                                                                     0.8.5-2                                                    alpm                            
 libclc                                                                        17.0.6-1                                                   alpm                            
 libcloudproviders                                                             0.3.6-1                                                    alpm                            
@@ -1147,7 +1147,7 @@ ms                                                                            2.
 mtdev                                                                         1.1.6-2                                                    alpm                            
 mute-stream                                                                   1.0.0                                                      npm                             
 nan                                                                           2.19.0                                                     npm                             
-ncurses                                                                       6.4_20230520-3                                             alpm                            
+ncurses                                                                       6.5-2                                                      alpm                            
 negotiator                                                                    0.6.3                                                      npm           (+2 duplicates)   
 nettle                                                                        3.9.1-1                                                    alpm                            
 nginx                                                                         1.26.0-3                                                   alpm                            
@@ -1411,9 +1411,8 @@ ssri                                                                          10
 startup-notification                                                          0.12-8                                                     alpm                            
 statuses                                                                      2.0.1                                                      npm                             
 stdlib                                                                        go1.21.6                                                   go-module                       
-stdlib                                                                        go1.22.1                                                   go-module                       
 stdlib                                                                        go1.22.2                                                   go-module                       
-stdlib                                                                        go1.22.3                                                   go-module     (+8 duplicates)   
+stdlib                                                                        go1.22.3                                                   go-module     (+9 duplicates)   
 steam-jupiter-stable                                                          1.0.0.79-1                                                 alpm                            
 steamdeck-kde-presets                                                         0.21-1                                                     alpm                            
 steamos-customizations-git                                                    20240212.1-3                                               alpm                            
@@ -1540,5 +1539,5 @@ yallist                                                                       4.
 zenity                                                                        4.0.1-1                                                    alpm                            
 zimg                                                                          3.0.5-1                                                    alpm                            
 zlib                                                                          1:1.3.1-2                                                  alpm                            
-zstd                                                                          1.5.5-1                                                    alpm                            
+zstd                                                                          1.5.6-1                                                    alpm                            
 zxing-cpp                                                                     2.2.1-1                                                    alpm                            
