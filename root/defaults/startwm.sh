@@ -9,10 +9,10 @@ fi
 
 # Set defaults for KDE
 if [ ! -f $HOME/.config/kwinrc ]; then
-  kwriteconfig5 --file $HOME/.config/kwinrc --group Compositing --key Enabled false
+  kwriteconfig6 --file $HOME/.config/kwinrc --group Compositing --key Enabled false
 fi
 if [ ! -f $HOME/.config/kscreenlockerrc ]; then
-  kwriteconfig5 --file $HOME/.config/kscreenlockerrc --group Daemon --key Autolock false
+  kwriteconfig6 --file $HOME/.config/kscreenlockerrc --group Daemon --key Autolock false
 fi
 gio mime x-scheme-handler/https firefox.desktop
 gio mime x-scheme-handler/http firefox.desktop

@@ -61,7 +61,7 @@ The architectures supported by this image are:
 
 *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
-**SteamOS is designed for specific AMD based hardware, this container will only work properly on a host with a modern AMD GPU or Intel ARC/iGPU**
+**SteamOS is designed for specific AMD based hardware, this container will only work fully on a host with a modern AMD GPU, Intel ARC/iGPU**
 
 The following limitations currently exist:
 * You must run the desktop mode initially to login to Steam, then you can switch to `STARTUP=BIGPICTURE`
@@ -72,8 +72,16 @@ The following limitations currently exist:
 * Sunshine auto discovery is not functional, you will need to manually enter the IP in your client. 
 * Remote play does not function well in BIGPICTURE mode, this mode is optimized for a single resolution passed on boot using Sunshine.
 
-To improve compatibility we ingest drivers from vanilla Arch repos, *but NVIDIA will never work*. This is a limitation of the [KasmVNC](https://kasmweb.com/kasmvnc) virtual framebuffer that we use as it only has logic for the [DRI3](https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure) framework which is not available for NVIDIA. We recommend using a modern RDNA AMD card or Intel ARC card, but lower end GPUs might work for some games we do bundle all the drivers that are possible to install.
+To improve compatibility we ingest drivers from vanilla Arch repos, The best experience will be with [DRI3](https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure) framework which is not available for NVIDIA. We recommend using a modern RDNA AMD card or Intel ARC card, but lower end GPUs might work for some games we do bundle all the drivers that are possible to install.
 Compatibility should be on par with the Steam Deck, if it is certified for the Deck it will run in our testing and the game should be fully playable.
+
+**Nvidia can work with additional "Launch Options" for games that need OpenGL support:**
+
+```
+LIBGL_KOPPER_DRI2=1 MESA_LOADER_DRIVER_OVERRIDE=zink GALLIUM_DRIVER=zink %command%
+```
+
+This should be used in tandem with `--gpus all --runtime nvidia` in the Docker run settings.
 
 The application can be accessed at:
 
@@ -386,6 +394,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **23.05.24:** - Document how to get Nvidia to work.
 * **15.01.24:** - Install gperftools to fix source games.
 * **29.11.23:** - Switch to openbox for bigpicture mode.
 * **06.10.23:** - Ingest sunshine from AUR to compile at build time.
