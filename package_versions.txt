@@ -1249,7 +1249,7 @@ perl-specio                                                                   0.
 perl-sub-exporter                                                             0.991-1                                                    alpm                            
 perl-sub-exporter-progressive                                                 0.001013-9                                                 alpm                            
 perl-sub-identify                                                             0.14-11                                                    alpm                            
-perl-sub-install                                                              0.928-9                                                    alpm                            
+perl-sub-install                                                              0.929-1                                                    alpm                            
 perl-switch                                                                   2.17-9                                                     alpm                            
 perl-test-fatal                                                               0.017-2                                                    alpm                            
 perl-timedate                                                                 2.33-5                                                     alpm                            
