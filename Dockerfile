@@ -62,7 +62,7 @@ RUN \
     mangohud \
     noto-fonts-cjk \
     plasma-desktop \
-    sddm-wayland \
+    sddm \
     steamdeck-kde-presets \
     steam-jupiter-stable \
     steamos-customizations \
