@@ -124,6 +124,7 @@ Most games will tie themselves to the current desktop resolution as set when you
 Authentication (not two factor) is not currently saved when closing and re-opening Steam for any reason when in Deck mode this is also being worked on. This means anytime you restart the container you will need to access the web interface and log back in.
 It is possible to play games over KasmVNC, but it as a protocol is not currently optimized for gaming. You will experience more frame skipping and latency as compared to Steam remote play.
 
+ 
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
@@ -385,10 +386,10 @@ docker build \
   -t lscr.io/linuxserver/steamos:latest .
 ```
 
-The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`
+The ARM variants can be built on x86_64 hardware and vice versa using `lscr.io/linuxserver/qemu-static`
 
 ```bash
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
+docker run --rm --privileged lscr.io/linuxserver/qemu-static --reset
 ```
 
 Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64`.
