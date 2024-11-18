@@ -22,7 +22,7 @@ RUN \
     lib32-libvdpau \
     lib32-mangohud \
     lib32-mesa-utils \
-    lib32-mesa-vdpau \
+    lib32-mesa \
     lib32-vulkan-intel \
     lib32-vulkan-mesa-layers \
     lib32-vulkan-radeon \
@@ -56,7 +56,7 @@ RUN \
     lib32-gcc-libs \
     lib32-libpulse \
     lib32-libunwind \
-    lib32-mesa-vdpau \
+    lib32-mesa \
     lib32-opencl-mesa \
     lib32-renderdoc-minimal \
     mangohud \
