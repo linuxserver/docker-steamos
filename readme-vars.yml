@@ -61,7 +61,7 @@ cap_add_param_vars:
   - {cap_add_var: "NET_ADMIN", desc: ""}
 # application setup block
 app_setup_block_enabled: true
-app_setup_block: |2
+app_setup_block: |
   *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
   **SteamOS is designed for specific AMD based hardware, this container will only work fully on a host with a modern AMD GPU, Intel ARC/iGPU**
