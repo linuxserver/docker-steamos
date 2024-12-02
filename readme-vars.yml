@@ -7,66 +7,61 @@ project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/ma
 project_blurb: "[SteamOS]({{ project_url }}) is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. **This container will only work with modern AMD/Intel GPUs on a real Linux Host**"
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
 project_blurb_optional_extras_enabled: false
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "latest"}
-
+  - {arch: "{{ arch_x86_64 }}", tag: "latest"}
 # development version
 development_versions: false
-
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
-  - { env_var: "DRINODE", env_value: "/dev/dri/renderD128", desc: "Specify the render device (GPU) for the contianer to use." }
+  - {env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London."}
+  - {env_var: "DRINODE", env_value: "/dev/dri/renderD128", desc: "Specify the render device (GPU) for the contianer to use."}
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "HOST_IP", env_value: "192.168.100.10", desc: "Specify the IP of the host, needed for LAN Remote Play." }
-  - { env_var: "STARTUP", env_value: "KDE", desc: "KDE to boot into desktop mode, BIGPICTURE to boot into gamescope." }
-  - { env_var: "RESOLUTION", env_value: "1920x1080", desc: "When booting into BIGPICTURE mode the screen resolution will be bound to this value." }
+  - {env_var: "HOST_IP", env_value: "192.168.100.10", desc: "Specify the IP of the host, needed for LAN Remote Play."}
+  - {env_var: "STARTUP", env_value: "KDE", desc: "KDE to boot into desktop mode, BIGPICTURE to boot into gamescope."}
+  - {env_var: "RESOLUTION", env_value: "1920x1080", desc: "When booting into BIGPICTURE mode the screen resolution will be bound to this value."}
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games." }
+  - {vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games."}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "3000", internal_port: "3000", port_desc: "SteamOS desktop gui." }
-  - { external_port: "3001", internal_port: "3001", port_desc: "HTTPS SteamOS desktop gui." }
+  - {external_port: "3000", internal_port: "3000", port_desc: "SteamOS desktop gui."}
+  - {external_port: "3001", internal_port: "3001", port_desc: "HTTPS SteamOS desktop gui."}
 opt_param_usage_include_ports: true
 opt_param_ports:
-  - { external_port: "27031-27036", internal_port: "27031-27036/udp", port_desc: "Steam Remote Play Ports (UDP)." }
-  - { external_port: "27031-27036", internal_port: "27031-27036", port_desc: "Steam Remote Play Ports (TCP)." }
-  - { external_port: "47984-47990", internal_port: "47984-47990", port_desc: "Sunshine Ports (TCP)." }
-  - { external_port: "48010-48010", internal_port: "48010-48010", port_desc: "Sunshine Ports (TCP)." }
-  - { external_port: "47998-48000", internal_port: "47998-48000/udp", port_desc: "Sunshine Ports (UDP)." }
+  - {external_port: "27031-27036", internal_port: "27031-27036/udp", port_desc: "Steam Remote Play Ports (UDP)."}
+  - {external_port: "27031-27036", internal_port: "27031-27036", port_desc: "Steam Remote Play Ports (TCP)."}
+  - {external_port: "47984-47990", internal_port: "47984-47990", port_desc: "Sunshine Ports (TCP)."}
+  - {external_port: "48010-48010", internal_port: "48010-48010", port_desc: "Sunshine Ports (TCP)."}
+  - {external_port: "47998-48000", internal_port: "47998-48000/udp", port_desc: "Sunshine Ports (UDP)."}
 custom_params:
-  - { name: "shm-size", name_compose: "shm_size", value: "1gb",desc: "This is needed for the steam browser to function properly." }
+  - {name: "shm-size", name_compose: "shm_size", value: "1gb", desc: "This is needed for the steam browser to function properly."}
 security_opt_param: true
 security_opt_param_vars:
-  - { run_var: "seccomp=unconfined", compose_var: "seccomp:unconfined", desc: "This is needed to allow kernel syscalls made by Steam." }
+  - {run_var: "seccomp=unconfined", compose_var: "seccomp:unconfined", desc: "This is needed to allow kernel syscalls made by Steam."}
 opt_security_opt_param: true
 opt_security_opt_param_vars:
-  - { run_var: "apparmor=unconfined", compose_var: "apparmor:unconfined", desc: "For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks." }
+  - {run_var: "apparmor=unconfined", compose_var: "apparmor:unconfined", desc: "For Debian/Ubuntu hosts Steam needs elevated perms that AppArmor blocks."}
 opt_param_usage_include_vols: true
 opt_param_volumes:
-  - { vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support. *Only working for Steam Remote Play" }
-  - { vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support. *Only working for Steam Remote Play" }
+  - {vol_path: "/dev/input", vol_host_path: "/dev/input", desc: "Optional for gamepad support. *Only working for Steam Remote Play"}
+  - {vol_path: "/run/udev/data", vol_host_path: "/run/udev/data", desc: "Optional for gamepad support. *Only working for Steam Remote Play"}
 param_device_map: true
 param_devices:
-  - { device_host_path: "/dev/dri", device_path: "/dev/dri", desc: "Video card passthrough to Steam." }
+  - {device_host_path: "/dev/dri", device_path: "/dev/dri", desc: "Video card passthrough to Steam."}
 param_usage_include_hostname: "optional"
 param_hostname: "hostname"
 param_hostname_desc: "Specify the hostname of the host, this is useful for keeping a persistent hostname between upgrades and identifying the server in the remote play Steam Client."
 cap_add_param: true
 cap_add_param_vars:
-  - { cap_add_var: "NET_ADMIN", desc: "" }
-
+  - {cap_add_var: "NET_ADMIN", desc: ""}
 # application setup block
 app_setup_block_enabled: true
-app_setup_block: |
-
+app_setup_block: |2
   *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
   **SteamOS is designed for specific AMD based hardware, this container will only work fully on a host with a modern AMD GPU, Intel ARC/iGPU**
@@ -131,13 +126,73 @@ app_setup_block: |
   Most games will tie themselves to the current desktop resolution as set when you connect to the web interface, a method for setting the resolution via the web interface is being worked on.
   Authentication (not two factor) is not currently saved when closing and re-opening Steam for any reason when in Deck mode this is also being worked on. This means anytime you restart the container you will need to access the web interface and log back in.
   It is possible to play games over KasmVNC, but it as a protocol is not currently optimized for gaming. You will experience more frame skipping and latency as compared to Steam remote play.
-
-
+# init diagram
+init_diagram: |
+  "steamos:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-kasmvnc-end -> init-config
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-os-end -> init-crontab-config
+    init-mods-end -> init-custom-files
+    base -> init-envfile
+    init-os-end -> init-kasmvnc
+    init-nginx -> init-kasmvnc-config
+    init-video -> init-kasmvnc-end
+    base -> init-migrations
+    base -> init-mods
+    init-config-end -> init-mods
+    init-mods -> init-mods-end
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    init-kasmvnc -> init-nginx
+    base -> init-os-end
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-migrations -> init-os-end
+    init-custom-files -> init-services
+    init-mods-end -> init-services
+    init-kasmvnc-config -> init-video
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-de
+    svc-nginx -> svc-de
+    svc-de -> legacy-services
+    init-services -> svc-docker
+    svc-de -> svc-docker
+    svc-docker -> legacy-services
+    init-services -> svc-kasmvnc
+    svc-pulseaudio -> svc-kasmvnc
+    svc-kasmvnc -> legacy-services
+    init-services -> svc-kclient
+    svc-kasmvnc -> svc-kclient
+    svc-kclient -> legacy-services
+    init-services -> svc-nginx
+    svc-kclient -> svc-nginx
+    svc-nginx -> legacy-services
+    init-services -> svc-pulseaudio
+    svc-pulseaudio -> legacy-services
+  }
+  Base Images: {
+    "baseimage-kasmvnc:arch" <- "baseimage-arch:latest"
+  }
+  "steamos:latest" <- Base Images
 # changelog
 changelogs:
-  - { date: "23.05.24:", desc: "Document how to get Nvidia to work." }
-  - { date: "15.01.24:", desc: "Install gperftools to fix source games." }
-  - { date: "29.11.23:", desc: "Switch to openbox for bigpicture mode." }
-  - { date: "06.10.23:", desc: "Ingest sunshine from AUR to compile at build time." }
-  - { date: "25.08.23:", desc: "Add deps needed for some audio and software compatibility." }
-  - { date: "04.07.23:", desc: "Initial release." }
+  - {date: "23.05.24:", desc: "Document how to get Nvidia to work."}
+  - {date: "15.01.24:", desc: "Install gperftools to fix source games."}
+  - {date: "29.11.23:", desc: "Switch to openbox for bigpicture mode."}
+  - {date: "06.10.23:", desc: "Ingest sunshine from AUR to compile at build time."}
+  - {date: "25.08.23:", desc: "Add deps needed for some audio and software compatibility."}
+  - {date: "04.07.23:", desc: "Initial release."}
