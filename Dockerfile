@@ -18,7 +18,6 @@ RUN \
     lib32-glibc \
     lib32-libva-intel-driver \
     lib32-libva-mesa-driver \
-    lib32-libva-vdpau-driver \
     lib32-libvdpau \
     lib32-mangohud \
     lib32-mesa-utils \
