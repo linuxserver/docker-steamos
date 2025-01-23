@@ -6,6 +6,7 @@ project_url: "https://www.steamdeck.com/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/steamos-logo.png"
 project_blurb: "[SteamOS]({{ project_url }}) is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. **This container will only work with modern AMD/Intel GPUs on a real Linux Host**"
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_categories: "Games"
 project_blurb_optional_extras_enabled: false
 # supported architectures
 available_architectures:
