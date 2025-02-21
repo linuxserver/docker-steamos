@@ -13,6 +13,11 @@ if [ -z ${RESOLUTION+x} ]; then
   RESOLUTION="1920x1080"
 fi
 
+# Disallow Kasm resizing
+if [ -z ${DO_NOT_RESIZE_KASM+x} ]; then
+  SETTING_RESIZE="-AcceptSetDesktopResolution false"
+fi
+
 exec s6-setuidgid abc \
   /usr/local/bin/Xvnc $DISPLAY \
     ${HW3D} \
@@ -24,8 +29,10 @@ exec s6-setuidgid abc \
     -http-header Cross-Origin-Embedder-Policy=require-corp \
     -http-header Cross-Origin-Opener-Policy=same-origin \
     -geometry ${RESOLUTION} \
+    ${SETTING_RESIZE} \
     -sslOnly 0 \
     -RectThreads 0 \
     -websocketPort 6901 \
     -interface 0.0.0.0 \
     -Log *:stdout:10
+    
