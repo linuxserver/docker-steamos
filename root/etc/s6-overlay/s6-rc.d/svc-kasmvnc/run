@@ -14,8 +14,8 @@ if [ -z ${RESOLUTION+x} ]; then
 fi
 
 # Disallow Kasm resizing
-if [ -z ${DO_NOT_RESIZE_KASM+x} ]; then
-  SETTING_RESIZE="-AcceptSetDesktopResolution false"
+if [ ${DO_NOT_RESIZE_KASM+x} ]; then
+  SETTING_RESIZE="-AcceptSetDesktopSize false"
 fi
 
 exec s6-setuidgid abc \

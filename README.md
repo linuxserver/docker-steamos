@@ -153,6 +153,7 @@ services:
       - HOST_IP=192.168.100.10 #optional
       - STARTUP=KDE #optional
       - RESOLUTION=1920x1080 #optional
+      - NO_KASM_RESIZE=1 #optional
     volumes:
       - /path/to/config:/config
       - /dev/input:/dev/input #optional
@@ -187,6 +188,7 @@ docker run -d \
   -e HOST_IP=192.168.100.10 `#optional` \
   -e STARTUP=KDE `#optional` \
   -e RESOLUTION=1920x1080 `#optional` \
+  -e NO_KASM_RESIZE=1 `#optional` \
   -p 3000:3000 \
   -p 3001:3001 \
   -p 27031-27036:27031-27036/udp `#optional` \
