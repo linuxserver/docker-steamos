@@ -153,6 +153,7 @@ services:
       - HOST_IP=192.168.100.10 #optional
       - STARTUP=KDE #optional
       - RESOLUTION=1920x1080 #optional
+      - DO_NOT_RESIZE_KASM=1 #optional
     volumes:
       - /path/to/config:/config
       - /dev/input:/dev/input #optional
@@ -187,6 +188,7 @@ docker run -d \
   -e HOST_IP=192.168.100.10 `#optional` \
   -e STARTUP=KDE `#optional` \
   -e RESOLUTION=1920x1080 `#optional` \
+  -e DO_NOT_RESIZE_KASM=1 `#optional` \
   -p 3000:3000 \
   -p 3001:3001 \
   -p 27031-27036:27031-27036/udp `#optional` \
@@ -224,6 +226,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e HOST_IP=192.168.100.10` | Specify the IP of the host, needed for LAN Remote Play. |
 | `-e STARTUP=KDE` | KDE to boot into desktop mode, BIGPICTURE to boot into gamescope. |
 | `-e RESOLUTION=1920x1080` | When booting into BIGPICTURE mode the screen resolution will be bound to this value. |
+| `-e DO_NOT_RESIZE_KASM=true` | This prohibits the kasm client from resizing the window when opened in a webpage. |
 | `-v /config` | Users home directory in the container, stores all files and games. |
 | `-v /dev/input` | Optional for gamepad support. *Only working for Steam Remote Play |
 | `-v /run/udev/data` | Optional for gamepad support. *Only working for Steam Remote Play |
