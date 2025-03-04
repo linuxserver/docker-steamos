@@ -25,6 +25,8 @@ opt_param_env_vars:
   - {env_var: "HOST_IP", env_value: "192.168.100.10", desc: "Specify the IP of the host, needed for LAN Remote Play."}
   - {env_var: "STARTUP", env_value: "KDE", desc: "KDE to boot into desktop mode, BIGPICTURE to boot into gamescope."}
   - {env_var: "RESOLUTION", env_value: "1920x1080", desc: "When booting into BIGPICTURE mode the screen resolution will be bound to this value."}
+  - {env_var: "DO_NOT_RESIZE_KASM", env_value: "true", desc: "This prohibits the kasm client from resizing the window when opened in a webpage."}
+
 param_usage_include_vols: true
 param_volumes:
   - {vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores all files and games."}
