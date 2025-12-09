@@ -5,7 +5,6 @@
 [![Blog](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=Blog)](https://blog.linuxserver.io "all the things you can do with our containers including How-To guides, opinions and much more!")
 [![Discord](https://img.shields.io/discord/354974912613449730.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Discord&logo=discord)](https://linuxserver.io/discord "realtime support / chat with the community and the team.")
 [![Discourse](https://img.shields.io/discourse/https/discourse.linuxserver.io/topics.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=discourse)](https://discourse.linuxserver.io "post on our community forum.")
-[![Fleet](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=Fleet)](https://fleet.linuxserver.io "an online web interface which displays all of our maintained images.")
 [![GitHub](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=GitHub&logo=github)](https://github.com/linuxserver "view the source for all of our repositories.")
 [![Open Collective](https://img.shields.io/opencollective/all/linuxserver.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Supporters&logo=open%20collective)](https://opencollective.com/linuxserver "please consider helping us by either donating or contributing to our budget")
 
@@ -22,9 +21,12 @@ Find us at:
 * [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
 * [Discord](https://linuxserver.io/discord) - realtime support / chat with the community and the team.
 * [Discourse](https://discourse.linuxserver.io) - post on our community forum.
-* [Fleet](https://fleet.linuxserver.io) - an online web interface which displays all of our maintained images.
 * [GitHub](https://github.com/linuxserver) - view the source for all of our repositories.
 * [Open Collective](https://opencollective.com/linuxserver) - please consider helping us by either donating or contributing to our budget
+
+# DEPRECATION NOTICE 
+This image is deprecated. We will not offer support for this image and it will not be updated.
+
 
 # [linuxserver/steamos](https://github.com/linuxserver/docker-steamos)
 
@@ -55,9 +57,10 @@ The architectures supported by this image are:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ❌ | |
-| armhf | ❌ | |
 
 ## Application Setup
+
+**This container is deprecated and never reached maturity. If you are looking for a true remote play solution for Steam we recommend [Wolf](https://github.com/games-on-whales/wolf), please see [here](https://games-on-whales.github.io/wolf/stable/user/quickstart.html) for quickstart instructions to give it a try.**
 
 *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
@@ -399,6 +402,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **09.12.25:** - Deprecate container, any future release will be for the Steam application not the underlying OS.
 * **23.05.24:** - Document how to get Nvidia to work.
 * **15.01.24:** - Install gperftools to fix source games.
 * **29.11.23:** - Switch to openbox for bigpicture mode.
