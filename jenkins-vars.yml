@@ -17,7 +17,7 @@ repo_vars:
   - PR_DOCKERHUB_IMAGE = 'lspipepr/steamos'
   - DIST_IMAGE = 'arch'
   - MULTIARCH = 'false'
-  - CI = 'true'
+  - CI = 'false'
   - CI_WEB = 'true'
   - CI_PORT = '3000'
   - CI_SSL = 'false'

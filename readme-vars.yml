@@ -8,6 +8,7 @@ project_blurb: "[SteamOS]({{ project_url }}) is an Arch based Linux distribution
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
 project_categories: "Games"
 project_blurb_optional_extras_enabled: false
+project_deprecation_status: true
 # supported architectures
 available_architectures:
   - {arch: "{{ arch_x86_64 }}", tag: "latest"}
@@ -63,6 +64,8 @@ cap_add_param_vars:
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
+  **This container is deprecated and never reached maturity. If you are looking for a true remote play solution for Steam we recommend [Wolf](https://github.com/games-on-whales/wolf), please see [here](https://games-on-whales.github.io/wolf/stable/user/quickstart.html) for quickstart instructions to give it a try.**
+
   *This container is currently in a Beta state and is developing quickly, things will change constantly and it may crash or not function perfectly especially when mixing Steam remote play frame capture with the web based [KasmVNC](https://kasmweb.com/kasmvnc) frame capture*
 
   **SteamOS is designed for specific AMD based hardware, this container will only work fully on a host with a modern AMD GPU, Intel ARC/iGPU**
@@ -187,6 +190,7 @@ init_diagram: |
   "steamos:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "09.12.25:", desc: "Deprecate container, any future release will be for the Steam application not the underlying OS."}
   - {date: "23.05.24:", desc: "Document how to get Nvidia to work."}
   - {date: "15.01.24:", desc: "Install gperftools to fix source games."}
   - {date: "29.11.23:", desc: "Switch to openbox for bigpicture mode."}
